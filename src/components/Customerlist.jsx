@@ -7,6 +7,8 @@ import "ag-grid-community/styles/ag-theme-material.css";
 import AddCustomer from './AddCustomer';
 import EditCustomer from './EditCustomer';
 
+import Button from '@mui/material/Button';
+
 export default function Customerlist() {
   const [customers, setCustomers] = useState([]);
 
@@ -25,6 +27,13 @@ export default function Customerlist() {
     {
       cellRenderer: params => <EditCustomer data={params.data} fetchCustomers={fetchCustomers} />,
       width: 100
+    },
+    {
+      cellRenderer: params =>
+        <Button size="small" onClick={() => deleteCustomer(params.data.links[0].href)}>
+          Delete
+        </Button>,
+        width: 100
     }
   ])
 
@@ -38,6 +47,19 @@ export default function Customerlist() {
     })
     .then(data => setCustomers(data.content))
     .catch(err => console.error(err));
+  }
+
+  const deleteCustomer = (url) => {
+    if (window.confirm("Delete this customer?")) {
+      fetch(url, {method: "DELETE"})
+      .then(response => {
+        if (response.ok)
+          fetchCustomers();
+        else
+          throw new Error("Error deleting customer: " + response.statusText);
+      })
+      .catch(err => console.error(err));
+    }
   }
 
   return (
