@@ -6,6 +6,8 @@ import "ag-grid-community/styles/ag-theme-material.css";
 
 import dayjs from 'dayjs';
 
+import Button from '@mui/material/Button';
+
 export default function Traininglist() {
     const [trainings, setTrainings] = useState([]);
 
@@ -29,6 +31,12 @@ export default function Traininglist() {
             }
             return '';
           }
+    },
+    {
+      cellRenderer: params => 
+        <Button size="small" onClick={() => deleteTraining("http://traineeapp.azurewebsites.net/api/trainings/" + params.data.id)}>
+          Delete
+        </Button>
     }
   ]);
 
@@ -42,6 +50,19 @@ export default function Traininglist() {
     })
     .then(data => setTrainings(data))
     .catch(err => console.error(err));
+  }
+
+  const deleteTraining = (url) => {
+    if (window.confirm("Delete this training")) {
+      fetch(url, {method: "DELETE"})
+      .then(response => {
+        if (response.ok)
+          fetchTrainings();
+        else
+          throw new Error("Error in deleting training: " + response.statusText);
+      })
+      .catch(err => console.error(err));
+    }
   }
 
     return (
