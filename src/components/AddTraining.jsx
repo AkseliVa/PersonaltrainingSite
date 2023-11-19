@@ -39,7 +39,7 @@ export default function AddTraining({ data, fetchCustomers }) {
             if (response.ok)
                 fetchCustomers();
             else
-                throw new Error("Error fetching: " + response.statusText);
+                throw new Error("Error adding training: " + response.statusText);
         })
         .catch(err => console.error(err));
 
@@ -50,7 +50,7 @@ export default function AddTraining({ data, fetchCustomers }) {
         <>
             <Button variant="contained" onClick={handleClickOpen}>Add training</Button>
             <Dialog open={open} onClose={handleClickClose}>
-                <DialogTitle>New Training</DialogTitle>
+                <DialogTitle>New Training for {data.firstname} {data.lastname}</DialogTitle>
                 <DialogContent>
                     <TextField
                         margin="dense"

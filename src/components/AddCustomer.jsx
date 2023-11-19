@@ -36,7 +36,8 @@ export default function AddCustomer({ fetchCustomers }) {
         .then(response => {
             if (response.ok)
                 fetchCustomers();
-            throw new Error("Error adding new customer: " + response.statusText);
+            else
+                throw new Error("Error adding new customer: " + response.statusText);
         })
         .catch(err => console.log(err));
 
