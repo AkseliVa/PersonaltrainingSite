@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 
 import Button from '@mui/material/Button';
 
+
 export default function Traininglist() {
     const [trainings, setTrainings] = useState([]);
 

@@ -6,6 +6,7 @@ import "ag-grid-community/styles/ag-theme-material.css";
 
 import AddCustomer from './AddCustomer';
 import EditCustomer from './EditCustomer';
+import AddTraining from './AddTraining';
 
 import Button from '@mui/material/Button';
 
@@ -25,15 +26,16 @@ export default function Customerlist() {
     {field: 'email', sortable: true, filter: true, width: 180},
     {field: 'phone', sortable: true, filter: true, width: 135},
     {
+      cellRenderer: params => <AddTraining data={params.data} fetchCustomers={fetchCustomers} />
+    },
+    {
       cellRenderer: params => <EditCustomer data={params.data} fetchCustomers={fetchCustomers} />,
-      width: 100
     },
     {
       cellRenderer: params =>
         <Button size="small" onClick={() => deleteCustomer(params.data.links[0].href)}>
           Delete
         </Button>,
-        width: 100
     }
   ])
 
