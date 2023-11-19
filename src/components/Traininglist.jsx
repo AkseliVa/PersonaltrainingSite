@@ -17,7 +17,7 @@ export default function Traininglist() {
   }, []);
 
   const [columnDefs] = useState([
-    {field: 'date', sortable: true, filter: true, width: 245, valueFormatter: params => dayjs(params.data.date).format('DD.MM.YYYY hh:mm')},
+    {field: 'date', sortable: true, filter: true, width: 245, valueFormatter: params => dayjs(params.data.date).format('DD.MM.YYYY HH:mm')},
     {field: 'duration', sortable: true, filter: true, width: 245},
     {field: 'activity', sortable: true, filter: true, width: 245},
     {
