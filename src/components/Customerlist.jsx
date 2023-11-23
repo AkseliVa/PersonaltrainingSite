@@ -10,8 +10,11 @@ import AddTraining from './AddTraining';
 
 import Button from '@mui/material/Button';
 
+import { CSVLink } from 'react-csv';
+
 export default function Customerlist() {
   const [customers, setCustomers] = useState([]);
+  const [CSVcustomers, setCSVcustomers] = useState([]);
 
   useEffect(() => {
     fetchCustomers();
@@ -29,7 +32,7 @@ export default function Customerlist() {
       cellRenderer: params => <AddTraining data={params.data} fetchCustomers={fetchCustomers} />
     },
     {
-      cellRenderer: params => <EditCustomer data={params.data} fetchCustomers={fetchCustomers} />,
+      cellRenderer: params => <EditCustomer data={params.data} fetchCustomers={fetchCustomers} />
     },
     {
       cellRenderer: params =>
@@ -47,7 +50,19 @@ export default function Customerlist() {
       else
         throw new Error("Error fetching: " + response.statusText);
     })
-    .then(data => setCustomers(data.content))
+    .then(data => { setCustomers(data.content)
+      const csvData = data.content.map(item => ({
+        firstname: item.firstname,
+        lastname: item.lastname,
+        streetaddress: item.streetaddress,
+        postcode: item.postcode,
+        city: item.city,
+        email: item.email,
+        phone: item.phone
+      }));
+    
+      setCSVcustomers(csvData);
+    })
     .catch(err => console.error(err));
   }
 
@@ -64,6 +79,20 @@ export default function Customerlist() {
     }
   }
 
+  useEffect(() => {
+
+  }, []);
+
+  const headers = [
+    { label: 'First name', key: "firstname"},
+    { label: 'Last name', key: "lastname"},
+    { label: 'Streetaddress', key: "streetaddress"},
+    { label: 'Postcode', key: "postcode"},
+    { label: 'City', key: "city"},
+    { label: 'Email', key: "email"},
+    { label: 'Phone', key: "phone"}
+  ];
+
   return (
     <>
     <AddCustomer fetchCustomers={fetchCustomers} />
@@ -74,6 +103,10 @@ export default function Customerlist() {
           pagination={true}
           paginationAutoSize={true} />
         </div>
+      
+      <div>
+        <CSVLink data={CSVcustomers} headers={headers} filename={"customerinfo.csv"}>Export to CSV file</CSVLink>
+      </div>
     </>
   )
 }

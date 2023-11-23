@@ -48,7 +48,7 @@ export default function AddTraining({ data, fetchCustomers }) {
     
     return (
         <>
-            <Button variant="contained" onClick={handleClickOpen}>Add training</Button>
+            <Button variant="contained" size="small" onClick={handleClickOpen}>Add training</Button>
             <Dialog open={open} onClose={handleClickClose}>
                 <DialogTitle>New Training for {data.firstname} {data.lastname}</DialogTitle>
                 <DialogContent>

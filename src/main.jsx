@@ -8,6 +8,7 @@ import App from './App.jsx'
 import Home from './components/Home.jsx'
 import Customerlist from './components/Customerlist.jsx'
 import Traininglist from './components/traininglist'
+import Calendar from './components/Calendar'
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "Traininglist",
         element: <Traininglist />
+      },
+      {
+        path: "Calendar",
+        element: <Calendar />
       }
     ]
   }

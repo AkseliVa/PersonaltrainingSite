@@ -54,7 +54,7 @@ export default function Traininglist() {
   }
 
   const deleteTraining = (url) => {
-    if (window.confirm("Delete this training")) {
+    if (window.confirm("Delete this training?")) {
       fetch(url, {method: "DELETE"})
       .then(response => {
         if (response.ok)

@@ -9,6 +9,7 @@ function App() {
         <Link to={"/"}>Home</Link>
         <Link to={"/Customerlist"}>Customerlist</Link>
         <Link to={"/Traininglist"}>Traininglist</Link>
+        <Link to={"/Calendar"}>Calendar</Link>
       </nav>
       <Outlet />
     </div>
