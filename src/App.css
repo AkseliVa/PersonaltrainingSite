@@ -40,3 +40,13 @@
 .read-the-docs {
   color: #888;
 }
+
+.nav-link {
+  margin-right: 10px;
+}
+
+.csv-export {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

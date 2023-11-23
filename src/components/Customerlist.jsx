@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import '../App.css'
 
 import { AgGridReact } from 'ag-grid-react';
 import "ag-grid-community/styles/ag-grid.css";
@@ -11,6 +12,8 @@ import AddTraining from './AddTraining';
 import Button from '@mui/material/Button';
 
 import { CSVLink } from 'react-csv';
+
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function Customerlist() {
   const [customers, setCustomers] = useState([]);
@@ -29,16 +32,16 @@ export default function Customerlist() {
     {field: 'email', sortable: true, filter: true, width: 180},
     {field: 'phone', sortable: true, filter: true, width: 135},
     {
-      cellRenderer: params => <AddTraining data={params.data} fetchCustomers={fetchCustomers} />
+      cellRenderer: params => <AddTraining data={params.data} fetchCustomers={fetchCustomers} />, width: 115
     },
     {
-      cellRenderer: params => <EditCustomer data={params.data} fetchCustomers={fetchCustomers} />
+      cellRenderer: params => <EditCustomer data={params.data} fetchCustomers={fetchCustomers} />, width: 115
     },
     {
       cellRenderer: params =>
         <Button size="small" onClick={() => deleteCustomer(params.data.links[0].href)}>
-          Delete
-        </Button>,
+          <DeleteIcon />
+        </Button>, width: 115
     }
   ])
 
@@ -96,7 +99,7 @@ export default function Customerlist() {
   return (
     <>
     <AddCustomer fetchCustomers={fetchCustomers} />
-      <div className="ag-theme-material" style={{ height: 470, width: 1000 }}>
+      <div className="ag-theme-material" style={{ height: 438, width: 1000 }}>
         <AgGridReact
           rowData={customers}
           columnDefs={columnDefs}
@@ -104,7 +107,7 @@ export default function Customerlist() {
           paginationAutoSize={true} />
         </div>
       
-      <div>
+      <div className='csv-export'>
         <CSVLink data={CSVcustomers} headers={headers} filename={"customerinfo.csv"}>Export to CSV file</CSVLink>
       </div>
     </>

@@ -8,6 +8,8 @@ import dayjs from 'dayjs';
 
 import Button from '@mui/material/Button';
 
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 export default function Traininglist() {
     const [trainings, setTrainings] = useState([]);
@@ -17,9 +19,9 @@ export default function Traininglist() {
   }, []);
 
   const [columnDefs] = useState([
-    {field: 'date', sortable: true, filter: true, width: 245, valueFormatter: params => dayjs(params.data.date).format('DD.MM.YYYY HH:mm')},
-    {field: 'duration', sortable: true, filter: true, width: 245},
-    {field: 'activity', sortable: true, filter: true, width: 245},
+    {field: 'date', sortable: true, filter: true, width: 200, valueFormatter: params => dayjs(params.data.date).format('DD.MM.YYYY HH:mm')},
+    {field: 'duration', sortable: true, filter: true, width: 150},
+    {field: 'activity', sortable: true, filter: true, width: 200},
     {
         field: 'customer',
         headerName: 'Customer',
@@ -36,8 +38,8 @@ export default function Traininglist() {
     {
       cellRenderer: params => 
         <Button size="small" onClick={() => deleteTraining("http://traineeapp.azurewebsites.net/api/trainings/" + params.data.id)}>
-          Delete
-        </Button>
+          <DeleteIcon />
+        </Button>, width: 188
     }
   ]);
 

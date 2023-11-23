@@ -5,6 +5,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import { DialogContent } from '@mui/material';
 import TextField from '@mui/material/TextField';
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 
 import moment from 'moment';
 
@@ -48,7 +49,7 @@ export default function AddTraining({ data, fetchCustomers }) {
     
     return (
         <>
-            <Button variant="contained" size="small" onClick={handleClickOpen}>Add training</Button>
+            <Button variant="contained" size="small" onClick={handleClickOpen}><FitnessCenterIcon /></Button>
             <Dialog open={open} onClose={handleClickClose}>
                 <DialogTitle>New Training for {data.firstname} {data.lastname}</DialogTitle>
                 <DialogContent>
