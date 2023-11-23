@@ -7,7 +7,7 @@ import './index.css'
 import App from './App.jsx'
 import Home from './components/Home.jsx'
 import Customerlist from './components/Customerlist.jsx'
-import Traininglist from './components/traininglist'
+import Traininglist from './components/Traininglist.jsx'
 import Calendar from './components/Calendar'
 
 const router = createBrowserRouter([
