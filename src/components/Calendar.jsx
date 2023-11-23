@@ -35,7 +35,7 @@ const Calendar = () => {
 
     const transformedAppointments = trainings.map((training) => ({
         startDate: new Date(training.date),
-        endDate: new Date(new Date(training.date).getTime() + training.duration * 60000), // Convert duration to milliseconds
+        endDate: new Date(new Date(training.date).getTime() + training.duration * 60000),
         title: `${training.customer.firstname} ${training.customer.lastname} - ${training.activity}`,
       }));
 
