@@ -6,10 +6,10 @@ export default function Statistics() {
     const [trainings, setTrainings] = useState([]);
 
     useEffect(() => {
-        fetchStatistics();
+        fetchTrainings();
     }, []);
 
-    const fetchStatistics = () => {
+    const fetchTrainings = () => {
         fetch('https://traineeapp.azurewebsites.net/gettrainings')
         .then(response => {
         if (response.ok)
