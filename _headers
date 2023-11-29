@@ -1,2 +1,5 @@
-/PersonaltrainingSite/src/*.css
+/PersonaltrainingSite/src/index.css
+  Content-Type: text/css
+
+/PersonaltrainingSite/src/App.css
   Content-Type: text/css
