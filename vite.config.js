@@ -6,7 +6,7 @@ export default defineConfig({
   base: '/PersonaltrainingSite/', // Adjust this to your repository name
   plugins: [react()],
   build: {
-    assetsDir: 'assets',
+    assetsDir: 'dist/assets',
   },
   resolve: {
     alias: {
