@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import '../App.css'
+import React from 'react';
 
 import { AgGridReact } from 'ag-grid-react';
 import "ag-grid-community/styles/ag-grid.css";
@@ -24,25 +25,25 @@ export default function Customerlist() {
   }, []);
 
   const [columnDefs] = useState([
-    {field: 'firstname', sortable: true, filter: true, width: 110},
-    {field: 'lastname', sortable: true, filter: true, width: 110},
-    {field: 'streetaddress', sortable: true, filter: true, width: 170},
-    {field: 'postcode', sortable: true, filter: true, width: 110},
-    {field: 'city', sortable: true, filter: true, width: 110},
-    {field: 'email', sortable: true, filter: true, width: 180},
-    {field: 'phone', sortable: true, filter: true, width: 135},
+    {field: 'firstname', sortable: true, filter: true, width: 120},
+    {field: 'lastname', sortable: true, filter: true, width: 120},
+    {field: 'streetaddress', sortable: true, filter: true, width: 120},
+    {field: 'postcode', sortable: true, filter: true, width: 120},
+    {field: 'city', sortable: true, filter: true, width: 120},
+    {field: 'email', sortable: true, filter: true, width: 120},
+    {field: 'phone', sortable: true, filter: true, width: 120},
     {
-      cellRenderer: params => <AddTraining data={params.data} fetchCustomers={fetchCustomers} />, width: 115
+      cellRenderer: params => <AddTraining data={params.data} fetchCustomers={fetchCustomers} />,  width: 120
     },
     {
-      cellRenderer: params => <EditCustomer data={params.data} fetchCustomers={fetchCustomers} />, width: 115
+      cellRenderer: params => <EditCustomer data={params.data} fetchCustomers={fetchCustomers} />, width: 120
     },
     {
       cellRenderer: params =>
         <Button size="small" onClick={() => deleteCustomer(params.data.links[0].href)}>
           <DeleteIcon />
-        </Button>, width: 115
-    }
+        </Button>, width: 120
+    },
   ])
 
   const fetchCustomers = () => {
@@ -99,7 +100,7 @@ export default function Customerlist() {
   return (
     <>
     <AddCustomer fetchCustomers={fetchCustomers} />
-      <div className="ag-theme-material" style={{ height: 438, width: 1000 }}>
+      <div className="ag-theme-material" style={{ height: "90vh", width: 1200 }}>
         <AgGridReact
           rowData={customers}
           columnDefs={columnDefs}

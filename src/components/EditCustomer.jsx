@@ -6,6 +6,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import { DialogContent } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
+import React from 'react';
 
 export default function EditCustomer({data, fetchCustomers}) {
     const [customer, setCustomer] = useState({

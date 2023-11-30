@@ -13,6 +13,7 @@ import {
   TodayButton
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { ViewState } from '@devexpress/dx-react-scheduler';
+import React from 'react';
 
 const Calendar = () => {
   const [appointments, setAppointments] = useState([]);
@@ -44,7 +45,7 @@ const Calendar = () => {
 
   return (
     <Paper>
-        <Scheduler data={appointments} height={470}>
+        <Scheduler data={appointments} height={"40vh"}>
             <ViewState defaultCurrentViewName="Week" />
             <DayView 
                 startDayHour={7}

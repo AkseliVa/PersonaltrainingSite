@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import React from 'react';
 
 import { AgGridReact } from 'ag-grid-react';
 import "ag-grid-community/styles/ag-grid.css";
@@ -70,7 +71,7 @@ export default function Traininglist() {
 
     return (
         <>
-        <div className="ag-theme-material" style={{ height: 470, width: 1000 }}>
+        <div className="ag-theme-material" style={{ height: "90vh", width: 983 }}>
             <AgGridReact
                 rowData={trainings}
                 columnDefs={columnDefs}

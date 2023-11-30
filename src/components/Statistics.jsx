@@ -1,6 +1,7 @@
-import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Label } from "recharts";
+import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Label, Tooltip } from "recharts";
 import { useState, useEffect } from 'react';
 import _ from 'lodash';
+import React from 'react';
 
 export default function Statistics() {
     const [trainings, setTrainings] = useState([]);
@@ -31,7 +32,7 @@ export default function Statistics() {
 
     return (
         <>
-            <BarChart width={600} height={300} data={statistics}>
+            <BarChart width={1200} height={600} data={statistics}>
                 <Bar type="monotone" dataKey="duration" fill="#8884d8" />
                 <CartesianGrid stroke="#ccc" />
                 <XAxis dataKey="activity" />
@@ -43,6 +44,7 @@ export default function Statistics() {
                         style={{textAnchor: "middle"}}
                         />
                 </YAxis>
+                <Tooltip />
             </BarChart>
         </>
     )
